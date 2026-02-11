@@ -25,7 +25,7 @@
             text-align: center;
             z-index: 2;
             padding: 30px 20px;
-            background: rgba(255, 255, 255, 0.35); /* 半透明磨砂質感 */
+            background: rgba(255, 255, 255, 0.35); 
             backdrop-filter: blur(10px);
             border-radius: 40px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.08);
@@ -48,11 +48,11 @@
             font-weight: 500;
         }
 
-        /* 倒數計時區塊 */
+        /* 倒數計時區塊 - 只保留日時分 */
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px; /* 增加間距讓排版更平衡 */
             margin-bottom: 30px;
         }
 
@@ -60,20 +60,20 @@
             display: flex;
             flex-direction: column;
             background: rgba(255, 255, 255, 0.6);
-            padding: 12px 5px;
+            padding: 15px 5px;
             border-radius: 15px;
-            min-width: 70px;
+            min-width: 80px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
 
         .time-number {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: bold;
             color: #795548;
         }
 
         .time-label {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             margin-top: 5px;
         }
 
@@ -155,10 +155,6 @@
                 <span class="time-number" id="mins">00</span>
                 <span class="time-label">分</span>
             </div>
-            <div class="time-box">
-                <span class="time-number" id="secs">00</span>
-                <span class="time-label">秒</span>
-            </div>
         </div>
 
         <div class="info-card">
@@ -194,7 +190,7 @@
             
             const size = Math.random() * 35 + 10 + 'px';
             const left = Math.random() * 100 + 'vw';
-            const duration = Math.random() * 5 + 8 + 's'; // 8-13秒飄完
+            const duration = Math.random() * 5 + 8 + 's';
             const delay = Math.random() * 5 + 's';
 
             bubble.style.width = size;
@@ -210,7 +206,6 @@
         setInterval(createBubble, 600);
 
         /* --- 倒數計時邏輯 --- */
-        // 設定目標時間：2026年2月28日 14:00:00
         const targetDate = new Date('2026-02-28T14:00:00').getTime();
 
         function updateCountdown() {
@@ -221,21 +216,17 @@
                 const d = Math.floor(diff / (1000 * 60 * 60 * 24));
                 const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const s = Math.floor((diff % (1000 * 60)) / 1000);
 
                 document.getElementById('days').innerText = d.toString().padStart(2, '0');
                 document.getElementById('hours').innerText = h.toString().padStart(2, '0');
                 document.getElementById('mins').innerText = m.toString().padStart(2, '0');
-                document.getElementById('secs').innerText = s.toString().padStart(2, '0');
             } else {
-                // 時間到的顯示
-                document.querySelector('.countdown').innerHTML = "<h3 style='color:#E91E63'>活動開始囉！歡迎大家！</h3>";
+                document.querySelector('.countdown').innerHTML = "<h3 style='color:#795548'>活動開始囉！歡迎大家！</h3>";
             }
         }
 
-        // 每秒執行一次
         setInterval(updateCountdown, 1000);
-        updateCountdown(); // 進入頁面立即執行一次
+        updateCountdown();
     </script>
 </body>
 </html>
