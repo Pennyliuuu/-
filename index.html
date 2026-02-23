@@ -19,7 +19,7 @@
             overflow-x: hidden;
         }
 
-        /* 內容容器 - 稍微加寬以容納大字體 */
+        /* 內容容器 */
         .container {
             text-align: center;
             z-index: 2;
@@ -34,14 +34,14 @@
         }
 
         h1 {
-            font-size: 2.2rem; /* 調大 2 級左右 */
+            font-size: 2.2rem;
             margin-bottom: 20px;
             letter-spacing: 2px;
             line-height: 1.4;
         }
 
         .subtitle {
-            font-size: 1.25rem; /* 調大 */
+            font-size: 1.25rem;
             line-height: 1.8;
             margin-bottom: 30px;
             font-weight: 500;
@@ -66,13 +66,13 @@
         }
 
         .box-text {
-            font-size: 2.2rem; /* 調大 */
+            font-size: 2.2rem;
             font-weight: bold;
             color: #795548;
         }
 
         .box-label {
-            font-size: 1.1rem; /* 調大 */
+            font-size: 1.1rem;
             margin-top: 5px;
         }
 
@@ -86,7 +86,7 @@
         }
 
         .info-card h2 {
-            font-size: 1.5rem; /* 調大 */
+            font-size: 1.5rem;
             text-align: center;
             margin-top: 0;
             margin-bottom: 25px;
@@ -100,16 +100,23 @@
 
         .info-label {
             font-weight: bold;
-            font-size: 1.1rem; /* 調大 */
+            font-size: 1.1rem;
             display: block;
             color: #8D6E63;
             margin-bottom: 5px;
         }
 
         .info-text {
-            font-size: 1.25rem; /* 調大 */
+            font-size: 1.25rem; /* 維持大部分字體大小 */
             display: block;
             line-height: 1.5;
+        }
+
+        /* 專屬地址樣式：縮小字體並強制單行 */
+        #address-text {
+            font-size: 1.05rem; 
+            white-space: nowrap;
+            letter-spacing: -0.5px; /* 稍微縮小字間距以容納更多字 */
         }
 
         /* 地圖導航連結 */
@@ -119,7 +126,7 @@
             margin-top: 10px;
             color: #5D4037;
             text-decoration: none; 
-            font-size: 1.2rem; /* 調大 */
+            font-size: 1.2rem;
             font-weight: bold;
             gap: 8px;
         }
@@ -131,7 +138,7 @@
 
         /* 提醒文字樣式 */
         .notice-text {
-            font-size: 1.2rem; /* 調大 */
+            font-size: 1.2rem;
             color: #5D4037;
             font-weight: 500;
             line-height: 1.6;
@@ -174,7 +181,7 @@
             </div>
             <div class="info-box">
                 <span class="box-text">28</span>
-                <span class="box-label) ">日</span>
+                <span class="box-label">日</span>
             </div>
         </div>
 
@@ -188,7 +195,7 @@
 
             <div class="info-item">
                 <span class="info-label">地點</span>
-                <span class="info-text">桃園市大園區中正東路一段389號</span>
+                <span class="info-text" id="address-text">桃園市大園區中正東路一段389號</span>
                 <a href="https://www.google.com/maps/search/?api=1&query=桃園市大園區中正東路一段389號" target="_blank" class="map-link">
                     <span class="icon">📍</span>開啟 Google Map 導航
                 </a>
