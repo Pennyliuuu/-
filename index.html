@@ -47,31 +47,31 @@
             font-weight: 500;
         }
 
-        /* 倒數計時區塊 */
-        .countdown {
+        /* 活動時間顯示區 */
+        .event-time-display {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             margin-bottom: 30px;
         }
 
-        .time-box {
+        .info-box {
             display: flex;
             flex-direction: column;
             background: rgba(255, 255, 255, 0.6);
             padding: 15px 5px;
             border-radius: 15px;
-            min-width: 80px;
+            min-width: 90px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
 
-        .time-number {
-            font-size: 2.2rem;
+        .box-text {
+            font-size: 1.8rem;
             font-weight: bold;
             color: #795548;
         }
 
-        .time-label {
+        .box-label {
             font-size: 0.85rem;
             margin-top: 5px;
         }
@@ -112,25 +112,20 @@
             line-height: 1.4;
         }
 
-        /* 地圖導航連結 - 無底線版本 */
+        /* 地圖導航連結 */
         .map-link {
             display: inline-flex;
             align-items: center;
             margin-top: 8px;
             color: #5D4037;
-            text-decoration: none; /* 移除底線 */
+            text-decoration: none; 
             font-size: 0.95rem;
             font-weight: bold;
             gap: 6px;
-            opacity: 0.9;
-        }
-
-        .map-link:active {
-            opacity: 0.6;
         }
 
         .map-link span.icon {
-            color: #FF5252; /* 紅色圖釘 */
+            color: #FF5252; 
             font-size: 1.1rem;
         }
 
@@ -172,29 +167,24 @@
             一起與我們迎接喜悅
         </p>
         
-        <div class="countdown">
-            <div class="time-box">
-                <span class="time-number" id="days">00</span>
-                <span class="time-label">日</span>
+        <div class="event-time-display">
+            <div class="info-box">
+                <span class="box-text">02</span>
+                <span class="box-label">月</span>
             </div>
-            <div class="time-box">
-                <span class="time-number" id="hours">00</span>
-                <span class="time-label">時</span>
+            <div class="info-box">
+                <span class="box-text">28</span>
+                <span class="box-label">日</span>
             </div>
-            <div class="time-box">
-                <span class="time-number" id="mins">00</span>
-                <span class="time-label">分</span>
+            <div class="info-box">
+                <span class="box-text">14:30</span>
+                <span class="box-label">時間</span>
             </div>
         </div>
 
         <div class="info-card">
             <h2>活動資訊</h2>
             
-            <div class="info-item">
-                <span class="info-label">日期</span>
-                <span class="info-text">2026/02/28 (六)</span>
-            </div>
-
             <div class="info-item">
                 <span class="info-label">時間</span>
                 <span class="info-text">14:30 - 17:00</span>
@@ -208,9 +198,14 @@
                 </a>
             </div>
 
+            <div class="info-item">
+                <span class="info-label">下午茶 🍰</span>
+                <span class="info-text">現場提供下午茶飲料及茶點</span>
+            </div>
+
             <div class="info-item" style="margin-bottom: 0;">
                 <span class="info-label">提醒</span>
-                <span class="notice-text">💡 每人準備一張一百元鈔票呦</span>
+                <span class="notice-text">💡 每人準備一張一百元鈔票</span>
             </div>
         </div>
     </div>
@@ -231,28 +226,6 @@
             setTimeout(() => { bubble.remove(); }, 15000);
         }
         setInterval(createBubble, 600);
-
-        /* --- 倒數計時邏輯 --- */
-        const targetDate = new Date('2026-02-28T14:30:00').getTime();
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const diff = targetDate - now;
-
-            if (diff > 0) {
-                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-                document.getElementById('days').innerText = d.toString().padStart(2, '0');
-                document.getElementById('hours').innerText = h.toString().padStart(2, '0');
-                document.getElementById('mins').innerText = m.toString().padStart(2, '0');
-            } else {
-                document.querySelector('.countdown').innerHTML = "<h3 style='color:#795548'>活動開始囉！歡迎大家！</h3>";
-            }
-        }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
     </script>
 </body>
 </html>
