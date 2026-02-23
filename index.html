@@ -71,6 +71,11 @@
             color: #795548;
         }
 
+        .time-label {
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
         /* 活動資訊方框 */
         .info-card {
             background: rgba(255, 255, 255, 0.6);
@@ -107,21 +112,26 @@
             line-height: 1.4;
         }
 
-        /* 地圖導航連結 - 去掉底色與邊框 */
+        /* 地圖導航連結 - 無底線版本 */
         .map-link {
             display: inline-flex;
             align-items: center;
             margin-top: 8px;
             color: #5D4037;
+            text-decoration: none; /* 移除底線 */
             font-size: 0.95rem;
             font-weight: bold;
-            gap: 5px;
+            gap: 6px;
+            opacity: 0.9;
+        }
+
+        .map-link:active {
+            opacity: 0.6;
         }
 
         .map-link span.icon {
-            color: #FF5252; /* 紅色圖釘顏色 */
-            text-decoration: none;
-            display: inline-block;
+            color: #FF5252; /* 紅色圖釘 */
+            font-size: 1.1rem;
         }
 
         /* 提醒文字樣式 */
@@ -200,7 +210,7 @@
 
             <div class="info-item" style="margin-bottom: 0;">
                 <span class="info-label">提醒</span>
-                <span class="notice-text">💡 每人準備一張一百元鈔票，活動使用</span>
+                <span class="notice-text">💡 每人準備一張一百元鈔票呦</span>
             </div>
         </div>
     </div>
