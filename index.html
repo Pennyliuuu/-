@@ -11,9 +11,8 @@
             padding: 0;
             min-height: 100vh;
             font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-            /* 背景：左右漸層，左藍 (#9fe7fc) 右粉 (#facacc) */
             background: linear-gradient(to right, #9fe7fc 0%, #facacc 100%);
-            color: #5D4037; /* 深咖啡色文字 */
+            color: #5D4037; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -48,11 +47,11 @@
             font-weight: 500;
         }
 
-        /* 倒數計時區塊 - 只保留日時分 */
+        /* 倒數計時區塊 */
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 20px; /* 增加間距讓排版更平衡 */
+            gap: 15px;
             margin-bottom: 30px;
         }
 
@@ -72,11 +71,6 @@
             color: #795548;
         }
 
-        .time-label {
-            font-size: 0.85rem;
-            margin-top: 5px;
-        }
-
         /* 活動資訊方框 */
         .info-card {
             background: rgba(255, 255, 255, 0.6);
@@ -87,7 +81,7 @@
         }
 
         .info-card h2 {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             text-align: center;
             margin-top: 0;
             margin-bottom: 20px;
@@ -108,8 +102,41 @@
         }
 
         .info-text {
-            font-size: 1.05rem;
+            font-size: 1rem;
             display: block;
+            line-height: 1.4;
+        }
+
+        /* 地圖按鈕樣式 */
+        .map-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #8D6E63;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: background 0.3s;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .map-btn:active {
+            background-color: #5D4037;
+            transform: scale(0.98);
+        }
+
+        /* 提醒文字樣式 */
+        .notice {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-left: 4px solid #facacc;
+            padding: 10px;
+            font-size: 0.95rem;
+            color: #D84315;
+            font-weight: bold;
         }
 
         /* 泡泡動畫 */
@@ -119,8 +146,7 @@
             background: rgba(255, 255, 255, 0.45);
             border-radius: 50%;
             pointer-events: none;
-            box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.3), 
-                        inset 5px 5px 15px rgba(255, 255, 255, 0.2);
+            box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.3);
             animation: rise var(--duration) ease-in infinite;
             z-index: 1;
         }
@@ -128,7 +154,6 @@
         @keyframes rise {
             0% { transform: translateY(0) scale(1) translateX(0); opacity: 0; }
             20% { opacity: 0.6; }
-            50% { transform: translateY(-50vh) scale(1.2) translateX(20px); }
             100% { transform: translateY(-115vh) scale(1.5) translateX(-20px); opacity: 0; }
         }
     </style>
@@ -167,17 +192,18 @@
 
             <div class="info-item">
                 <span class="info-label">時間</span>
-                <span class="info-text">14:00 - 17:00</span>
+                <span class="info-text">14:30 - 17:00</span>
             </div>
 
             <div class="info-item">
                 <span class="info-label">地點</span>
-                <span class="info-text">大舅舅家</span>
+                <span class="info-text">桃園市大園區中正東路一段389號</span>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=桃園市大園區中正東路一段389號" target="_blank" class="map-btn">📍 開啟 Google 地圖導航</a>
             </div>
 
             <div class="info-item" style="margin-bottom: 0;">
-                <span class="info-label">禮物</span>
-                <span class="info-text">🎁 精美小禮物將準備給一位幸運兒</span>
+                <span class="info-label">提醒</span>
+                <p class="notice">💡 每人準備一張一百元鈔票，活動使用</p>
             </div>
         </div>
     </div>
@@ -187,26 +213,21 @@
         function createBubble() {
             const bubble = document.createElement('div');
             bubble.classList.add('bubble');
-            
             const size = Math.random() * 35 + 10 + 'px';
             const left = Math.random() * 100 + 'vw';
             const duration = Math.random() * 5 + 8 + 's';
-            const delay = Math.random() * 5 + 's';
-
             bubble.style.width = size;
             bubble.style.height = size;
             bubble.style.left = left;
             bubble.style.setProperty('--duration', duration);
-            bubble.style.animationDelay = delay;
-
             document.body.appendChild(bubble);
-
             setTimeout(() => { bubble.remove(); }, 15000);
         }
         setInterval(createBubble, 600);
 
         /* --- 倒數計時邏輯 --- */
-        const targetDate = new Date('2026-02-28T14:00:00').getTime();
+        // 目標時間：2026年2月28日 14:30
+        const targetDate = new Date('2026-02-28T14:30:00').getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
@@ -224,7 +245,6 @@
                 document.querySelector('.countdown').innerHTML = "<h3 style='color:#795548'>活動開始囉！歡迎大家！</h3>";
             }
         }
-
         setInterval(updateCountdown, 1000);
         updateCountdown();
     </script>
