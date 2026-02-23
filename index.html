@@ -90,7 +90,7 @@
         }
 
         .info-item {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
         .info-label {
@@ -107,36 +107,38 @@
             line-height: 1.4;
         }
 
-        /* 地圖按鈕樣式 */
+        /* 地圖按鈕樣式 - 改為淺米色 */
         .map-btn {
             display: inline-block;
             margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #8D6E63;
-            color: white;
+            padding: 12px 20px;
+            background-color: #f5f5dc; /* 淺米色 */
+            color: #5D4037; /* 深咖啡色文字 */
             text-decoration: none;
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: bold;
-            transition: background 0.3s;
+            transition: all 0.3s;
             text-align: center;
             width: 100%;
             box-sizing: border-box;
+            border: 1px solid rgba(93, 64, 55, 0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         .map-btn:active {
-            background-color: #5D4037;
+            background-color: #edeade;
             transform: scale(0.98);
         }
 
-        /* 提醒文字樣式 */
-        .notice {
-            background-color: rgba(255, 255, 255, 0.8);
-            border-left: 4px solid #facacc;
-            padding: 10px;
+        /* 提醒文字樣式 - 去除紅色邊框 */
+        .notice-text {
             font-size: 0.95rem;
-            color: #D84315;
-            font-weight: bold;
+            color: #5D4037;
+            font-weight: 500;
+            line-height: 1.5;
+            margin-top: 5px;
+            display: block;
         }
 
         /* 泡泡動畫 */
@@ -198,12 +200,12 @@
             <div class="info-item">
                 <span class="info-label">地點</span>
                 <span class="info-text">桃園市大園區中正東路一段389號</span>
-                <a href="https://www.google.com/maps/dir/?api=1&destination=桃園市大園區中正東路一段389號" target="_blank" class="map-btn">📍 開啟 Google 地圖導航</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=桃園市大園區中正東路一段389號" target="_blank" class="map-btn">📍 開啟 Google 地圖導航</a>
             </div>
 
             <div class="info-item" style="margin-bottom: 0;">
                 <span class="info-label">提醒</span>
-                <p class="notice">💡 每人準備一張一百元鈔票，活動使用</p>
+                <span class="notice-text">💡 每人準備一張一百元鈔票，活動使用</span>
             </div>
         </div>
     </div>
@@ -226,7 +228,6 @@
         setInterval(createBubble, 600);
 
         /* --- 倒數計時邏輯 --- */
-        // 目標時間：2026年2月28日 14:30
         const targetDate = new Date('2026-02-28T14:30:00').getTime();
 
         function updateCountdown() {
